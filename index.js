@@ -54,8 +54,7 @@ let usrLike = document.getElementsByClassName('bi bi-heart')
 const myLikes = document.getElementById('my-likes')
 
 
-usrLike = addEventListener('click', function() {
-    let increment = ""
-    increment.textContent = usrLike++
-    
-})
+// usrLike = addEventListener('click', function() {
+//     let increment = ""
+//     increment.textContent = usrLike++
+// })
