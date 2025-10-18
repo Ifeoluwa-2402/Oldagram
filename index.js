@@ -1,4 +1,5 @@
 import { posts } from './data.js'
+
 for (let i = 0; i < posts.length; i++) {
     const container = document.getElementById('container')
     const post = `
@@ -10,11 +11,11 @@ for (let i = 0; i < posts.length; i++) {
                     <p class="location">${posts[i].location}</p>   
                 </div>
             </div>
-            <img class="post-img" src="${posts[i].post}" alt="Post Image">
+            <img class="post-img" id="${posts[i].id}" src="${posts[i].post}" alt="Post Image">
             <div class="icons">
-                <i class="bi bi-heart"></i>
-                <i class="bi bi-chat"></i>
-                <i class="bi bi-send"></i>
+                <i class="bi bi-heart" data-like-icon='${posts[i].id}'></i>
+                <i class="bi bi-chat" data-comment='${posts[i].id}'></i>
+                <i class="bi bi-send" data-send='${posts[i].id}'></i>
             </div>
             <p class="likes">${posts[i].likes} likes</p>
             <p class="comment"><span id="my-likes">${posts[i].username}</span> ${posts[i].comment}</p>
@@ -22,11 +23,22 @@ for (let i = 0; i < posts.length; i++) {
     `  
     container.innerHTML += post
 }
-let usrLike = document.getElementsByClassName('bi bi-heart')
-const myLikes = document.getElementById('my-likes')
 
+document.addEventListener('click', function(e) {
+    if (e.target.dataset.likeIcon) {
+        handleLikeClick(e.target.dataset.likeIcon)
+    }
+    // if (e.target.dataset.comment) {
+    //     handleLikeClick(e.target.dataset.comment);
+    // }
+    // if (e.target.dataset.send) {
+    //     handleLikeClick(e.target.dataset.send);
+    // }
+})
 
-// usrLike = addEventListener('click', function() {
-//     let increment = ""
-//     increment.textContent = usrLike++
-// })
+function handleLikeClick(tweetId) {
+    posts.forEach(function(post) {
+        //  post.likes++
+         console.log(post.likes++)
+    })
+}
